@@ -17,6 +17,29 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-color);
+    cursor: none;
+}
+
+.cursor {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transition: 0.1s;
+    z-index: 9999;
+}
+
+.cursor-follower {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transition: 0.15s;
+    z-index: 9999;
 }
 
 header {
@@ -77,24 +100,24 @@ main {
 }
 
 section {
-    margin-bottom: 60px;
+    margin-bottom: 100px;
 }
 
-h1, h2, h3 {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 3.5em;
-}
-
-h2 {
+.section-title {
     font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
 }
 
-p {
-    margin-bottom: 15px;
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 10px auto 0;
 }
 
 .hero {
@@ -110,196 +133,70 @@ p {
 
 .hero-image {
     flex: 1;
-    text-align: right;
+    position: relative;
 }
 
 .hero-image img {
     max-width: 100%;
     border-radius: 50%;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
 }
 
-.tagline {
-    font-size: 1.5em;
-    color: var(--secondary-color);
-    margin-bottom: 30px;
-}
-
-.cta-button {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: #ffffff;
-    padding: 12px 24px;
-    text-decoration: none;
-    border-radius: 30px;
-    transition: all 0.3s ease;
-    font-weight: 600;
-}
-
-.cta-button:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.about-content {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-.profile-pic {
+.hero-shape {
+    position: absolute;
     width: 300px;
     height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.about-text {
-    flex: 1;
-}
-
-.download-cv {
-    display: inline-block;
     background-color: var(--secondary-color);
-    color: #ffffff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 30px;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    margin-top: 20px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    top: -20px;
+    right: -20px;
+    z-index: 1;
 }
 
-.download-cv:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.skills-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.skill-category {
-    flex: 1;
-    min-width: 250px;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.skill-category h3 {
-    margin-bottom: 15px;
-    color: var(--secondary-color);
-}
-
-.skill-category ul {
-    list-style-type: none;
-}
-
-.skill-category ul li {
-    margin-bottom: 10px;
-}
-
-.skill-category ul li i {
-    margin-right: 10px;
-    color: var(--primary-color);
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.project-card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-}
-
-.project-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.project-info {
-    padding: 20px;
-}
-
-.project-info h3 {
-    margin-bottom: 10px;
-}
-
-.project-links {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.project-link {
-    display: inline-block;
-    background-color: var(--secondary-color);
-    color: #ffffff;
-    padding: 8px 16px;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    font-size: 0.9em;
-}
-
-.project-link:hover {
-    background-color: var(--primary-color);
-}
-
-#contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.form-group {
+.glitch {
+    font-size: 4em;
+    font-weight: bold;
+    text-transform: uppercase;
     position: relative;
-    margin-bottom: 30px;
+    text-shadow: 0.05em 0 0 var(--accent-color), -0.05em -0.025em 0 var(--secondary-color),
+                 0.025em 0.05em 0 var(--primary-color);
+    animation: glitch 725ms infinite;
 }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-bottom: 2px solid var(--secondary-color);
-    background-color: transparent;
-    font-size: 1em;
-    transition: all 0.3s ease;
-}
-
-.form-group label {
+.glitch span {
     position: absolute;
-    top: 10px;
+    top: 0;
     left: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
 }
 
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group input:valid,
-.form-group textarea:valid {
-    outline: none;
-    border-bottom-color: var(--primary-color);
+.glitch span:first-child {
+    animation: glitch 500ms infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+    transform: translate(-0.05em, -0.025em);
+    opacity: 0.75;
 }
 
-.form-group input:
+.glitch span:last-child {
+    animation: glitch 375ms infinite;
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+    transform: translate(0.05em, 0.025em);
+    opacity: 0.75;
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 var(--accent-color), -0.05em -0.025em 0 var(--secondary-color),
+                     0.025em 0.05em 0 var(--primary-color);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 var(--accent-color), -0.05em -0.025em 0 var(--secondary-color),
+                     0.025em 0.05em 0 var(--primary-color);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-color), 0.025em 0.025em 0 var(--secondary-color),
+                     -0.05em -0.05em 0 var(--primary-color);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 var(--accent-color),
