@@ -210,13 +210,13 @@ section {
 }
 
 .contact-container {
+    max-width: 800px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    max-width: 1000px;
-    margin: 0 auto;
     background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
@@ -225,6 +225,9 @@ section {
     padding: 40px;
     background-color: var(--primary-color);
     color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .contact-info h3 {
@@ -243,21 +246,21 @@ section {
 .contact-item {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .contact-item i {
-    font-size: 20px;
+    font-size: 24px;
     margin-right: 15px;
 }
 
 .social-links {
-    display: flex;
+    margin-top: 30px;
 }
 
 .social-links a {
     color: #ffffff;
-    font-size: 20px;
+    font-size: 24px;
     margin-right: 15px;
     transition: color 0.3s ease;
 }
@@ -323,14 +326,15 @@ section {
     background-color: var(--primary-color);
     color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .submit-button:hover {
     background-color: var(--secondary-color);
+    transform: translateY(-3px);
 }
 
 .submit-button i {
@@ -420,8 +424,8 @@ section {
         flex-direction: column;
     }
     
-    .contact-info,
-    #contact-form {
+    #contact-form,
+    .contact-info {
         padding: 30px;
     }
 
