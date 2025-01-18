@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Doe - Personal Website</title>
+    <title>Your Name - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
+            <div class="logo">YN</div>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -21,36 +24,71 @@
 
     <main>
         <section id="home">
-            <h1>John Doe</h1>
-            <p>Web Developer & Designer</p>
+            <div class="hero">
+                <h1>Your Name</h1>
+                <p class="tagline">Web Developer & Designer</p>
+                <a href="#contact" class="cta-button">Get in Touch</a>
+            </div>
         </section>
 
         <section id="about">
             <h2>About Me</h2>
-            <p>Hello! I'm John, a passionate web developer with a keen eye for design. I love creating beautiful and functional websites that make a difference.</p>
+            <div class="about-content">
+                <img src="https://via.placeholder.com/150" alt="Your Name" class="profile-pic">
+                <p>Hello! I'm a passionate web developer with a keen eye for design. I love creating beautiful and functional websites that make a difference. With a strong foundation in HTML, CSS, and JavaScript, I'm always eager to learn new technologies and push the boundaries of what's possible on the web.</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">HTML5</div>
+                <div class="skill-item">CSS3</div>
+                <div class="skill-item">JavaScript</div>
+                <div class="skill-item">React</div>
+                <div class="skill-item">Node.js</div>
+                <div class="skill-item">Git</div>
+            </div>
         </section>
 
         <section id="projects">
-            <h2>My Projects</h2>
-            <div class="project">
-                <h3>Project 1</h3>
-                <p>A responsive e-commerce website built with HTML, CSS, and JavaScript.</p>
-            </div>
-            <div class="project">
-                <h3>Project 2</h3>
-                <p>A dynamic blog platform developed using React and Node.js.</p>
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Project 1">
+                    <h3>E-commerce Website</h3>
+                    <p>A responsive online store built with HTML, CSS, and JavaScript.</p>
+                    <a href="#" class="project-link">View Project</a>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Project 2">
+                    <h3>Blog Platform</h3>
+                    <p>A dynamic blog site developed using React and Node.js.</p>
+                    <a href="#" class="project-link">View Project</a>
+                </div>
             </div>
         </section>
 
         <section id="contact">
             <h2>Get in Touch</h2>
-            <p>Feel free to reach out to me for collaborations or just to say hi!</p>
-            <a href="mailto:john@example.com" class="button">Email Me</a>
+            <form id="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 John Doe. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
