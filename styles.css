@@ -4,6 +4,7 @@
     --text-color: #2d3436;
     --bg-color: #f9f9f9;
     --accent-color: #fd79a8;
+    --accent-color-rgb: 253, 121, 168; /* RGB values for #fd79a8 */
 }
 
 /* Global Styles */
@@ -27,22 +28,48 @@ body {
     position: fixed;
     pointer-events: none;
     z-index: 9999;
+    transition: all 0.1s ease-out;
 }
 
 .cursor {
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--primary-color);
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
     border-radius: 50%;
-    transition: 0.1s;
+    opacity: 0.7;
 }
 
 .cursor-follower {
-    width: 8px;
-    height: 8px;
-    background-color: var(--accent-color);
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary-color);
     border-radius: 50%;
-    transition: 0.15s;
+    opacity: 0.5;
+    transform: translate(-25%, -25%);
+}
+
+.cursor-hover {
+    transform: scale(1.5);
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+}
+
+.cursor-follower.cursor-hover {
+    transform: translate(-25%, -25%) scale(0.8);
+    background-color: rgba(var(--accent-color-rgb), 0.1);
+    border-color: var(--accent-color);
+}
+
+.cursor-click {
+    transform: scale(0.8);
+    background-color: var(--accent-color);
+}
+
+.cursor-follower.cursor-click {
+    transform: translate(-25%, -25%) scale(1.2);
+    background-color: transparent;
+    border-width: 4px;
+    border-color: var(--accent-color);
 }
 
 /* Header and Navigation */
