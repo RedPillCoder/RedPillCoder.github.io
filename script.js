@@ -3,8 +3,33 @@ const cursor = document.querySelector('.cursor');
 const cursorFollower = document.querySelector('.cursor-follower');
 
 document.addEventListener('mousemove', (e) => {
-    gsap.to(cursor, {duration: 0.23, x: e.clientX, y: e.clientY});
-    gsap.to(cursorFollower, {duration: 0.43, x: e.clientX, y: e.clientY});
+    gsap.to(cursor, {duration: 0.1, x: e.clientX, y: e.clientY});
+    gsap.to(cursorFollower, {duration: 0.3, x: e.clientX, y: e.clientY});
+});
+
+// Add hover effect to interactive elements
+const interactiveElements = document.querySelectorAll('a, button, .project-card, .form-group input, .form-group textarea');
+
+interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        cursor.classList.add('cursor-hover');
+        cursorFollower.classList.add('cursor-hover');
+    });
+    el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('cursor-hover');
+        cursorFollower.classList.remove('cursor-hover');
+    });
+});
+
+// Add click effect
+document.addEventListener('mousedown', () => {
+    cursor.classList.add('cursor-click');
+    cursorFollower.classList.add('cursor-click');
+});
+
+document.addEventListener('mouseup', () => {
+    cursor.classList.remove('cursor-click');
+    cursorFollower.classList.remove('cursor-click');
 });
 
 // Navbar scroll effect
