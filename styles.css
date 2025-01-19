@@ -340,7 +340,7 @@ section {
 .form-group textarea:focus ~ label,
 .form-group input:valid ~ label,
 .form-group textarea:valid ~ label {
-    top: -13px;
+    top: -10px;
     font-size: 12px;
     color: var(--primary-color);
 }
