@@ -6,7 +6,7 @@
   <title>RedPillCoder - Creative Technologist</title>
   <meta name="description" content="RedPillCoder — Creative Technologist & Digital Innovator crafting immersive web experiences with modern tech and design." />
 
-  <!-- Performance: fonts first -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
@@ -17,11 +17,11 @@
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-  <!-- Your styles last to override -->
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Preload hero image for faster LCP -->
-  <link rel="preload" as="image" href="https://via.placeholder.com/500" imagesrcset="https://via.placeholder.com/500 500w" imagesizes="(max-width: 600px) 80vw, 500px" />
+  <!-- Preload hero image -->
+  <link rel="preload" as="image" href="https://via.placeholder.com/500" />
 </head>
 <body>
   <a href="#home" class="skip-link">Skip to content</a>
@@ -48,6 +48,7 @@
   </header>
 
   <main>
+    <!-- Hero -->
     <section id="home" class="hero">
       <div class="hero-content">
         <h1 class="glitch" data-text="RedPillCoder">RedPillCoder</h1>
@@ -68,6 +69,7 @@
       </div>
     </section>
 
+    <!-- About -->
     <section id="about">
       <h2 class="section-title">About Me</h2>
       <div class="about-content">
@@ -85,19 +87,21 @@
           <div class="about-shape"></div>
         </div>
         <div class="about-text">
-          <p>Hello! I'm a creative technologist passionate about merging cutting-edge technology with innovative design. With a background in both software development and digital art, I craft immersive digital experiences that push the boundaries of what's possible on the web.</p>
-          <p>My expertise spans from front-end wizardry to back-end architecture, always with an eye for aesthetics and user experience. I thrive on challenges and am constantly exploring new technologies to stay at the forefront of digital innovation.</p>
+          <p>Hello! I'm a creative technologist passionate about merging cutting-edge technology with innovative design...</p>
+          <p>My expertise spans from front-end wizardry to back-end architecture...</p>
         </div>
       </div>
     </section>
 
+    <!-- Skills -->
     <section id="skills">
       <h2 class="section-title">My Expertise</h2>
       <div class="skills-container">
-        <!-- Add your skills content here -->
+        <!-- Skills go here -->
       </div>
     </section>
 
+    <!-- Experience -->
     <section id="experience">
       <h2 class="section-title">Work Experience</h2>
       <div class="timeline">
@@ -116,59 +120,50 @@
       </div>
     </section>
 
+    <!-- Featured Projects -->
     <section id="projects">
       <h2 class="section-title">Featured Projects</h2>
       <div class="project-grid">
-        <div class="project-card" data-aos="fade-up">
+        <div class="project-card">
           <div class="project-image">
-            <img
-              src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
-              data-src="https://via.placeholder.com/400x300"
-              alt="Project 1"
-              class="lazy"
-              width="400"
-              height="300"
-              loading="lazy"
-              decoding="async"
-            />
+            <img src="https://via.placeholder.com/400x300"
+                 data-src="https://via.placeholder.com/400x300"
+                 alt="Project 1" class="lazy" width="400" height="300" />
           </div>
           <div class="project-info">
             <h3>Duplicate File Cleaner</h3>
-            <p>This tool helps you identify and remove duplicate files in your Downloads folder, keeping only the most recently modified version of each file.</p>
+            <p>Tool to identify and remove duplicate files.</p>
             <div class="project-links">
-              <a href="https://github.com/RedPillCoder/duplicate-file-cleaner" class="project-link" target="_blank" rel="noopener"> <i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+              <a href="https://github.com/RedPillCoder/duplicate-file-cleaner" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> GitHub
+              </a>
             </div>
           </div>
         </div>
-
-        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="project-card">
           <div class="project-image">
-            <img
-              src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
-              data-src="https://via.placeholder.com/400x300"
-              alt="Project 2"
-              class="lazy"
-              width="400"
-              height="300"
-              loading="lazy"
-              decoding="async"
-            />
+            <img src="https://via.placeholder.com/400x300"
+                 data-src="https://via.placeholder.com/400x300"
+                 alt="Project 2" class="lazy" width="400" height="300" />
           </div>
           <div class="project-info">
             <h3>BatchScriptAutomation</h3>
-            <p>BatchScriptAutomation is a repository of automated batch scripts (.bat) designed to simplify various system administration tasks.</p>
+            <p>Automated batch scripts for system tasks.</p>
             <div class="project-links">
-              <a href="https://github.com/RedPillCoder/BatchScriptAutomation" class="project-link" target="_blank" rel="noopener"> <i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+              <a href="https://github.com/RedPillCoder/BatchScriptAutomation" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> GitHub
+              </a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact">
       <h2 class="section-title">Get in Touch</h2>
       <div class="contact-container">
-        <form id="contact-form" data-aos="fade-up">
+        <form id="contact-form" novalidate>
           <div class="form-group">
             <input type="text" id="name" name="name" required />
             <label for="name">Your Name</label>
@@ -189,31 +184,35 @@
 
         <div class="contact-info">
           <div class="contact-item">
-            <i class="fas fa-envelope" aria-hidden="true"></i>
+            <i class="fas fa-envelope"></i>
             <span>youremail@example.com</span>
           </div>
           <div class="contact-item">
-            <i class="fas fa-phone" aria-hidden="true"></i>
-            <span>+1 (123) 456-7890</span>
+            <i class="fas fa-phone"></i>
+            <span>+00 000-000-000</span>
           </div>
           <div class="contact-item">
-            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <i class="fas fa-map-marker-alt"></i>
             <span>Your City, Country</span>
           </div>
           <div class="social-links">
-            <a href="https://github.com/RedPillCoder?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
-            <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn profile placeholder"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-            <a href="#" target="_blank" rel="noopener" aria-label="Twitter profile placeholder"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-            <a href="#" target="_blank" rel="noopener" aria-label="Dribbble profile placeholder"><i class="fab fa-dribbble" aria-hidden="true"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer></footer>
+  <footer>
+    <p style="text-align:center; padding: 20px; font-size: 0.9rem; color: #666;">
+      &copy; 2025 RedPillCoder. All rights reserved.
+    </p>
+  </footer>
 
-  <!-- Defer to preserve order and avoid race conditions -->
+  <!-- Scripts -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
   <script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
