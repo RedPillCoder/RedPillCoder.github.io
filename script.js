@@ -1,19 +1,15 @@
-// Defensive, first-load safe initialization
 document.addEventListener('DOMContentLoaded', () => {
   const $ = (s, r=document) => r.querySelector(s);
   const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
   const has = k => k.split('.').reduce((o, p) => (o && o[p] !== undefined ? o[p] : undefined), window);
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Custom cursor (disable on touch; guard GSAP)
+  // Custom cursor
   const cursor = $('.cursor');
   const cursorFollower = $('.cursor-follower');
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-  if (isTouch) {
-    document.body.style.cursor = 'auto';
-    if (cursor) cursor.style.display = 'none';
-    if (cursorFollower) cursorFollower.style.display = 'none';
-  } else if (cursor && cursorFollower && has('gsap')) {
+  if (!isTouch && cursor && cursorFollower && has('gsap') && !reduceMotion) {
     const updateCursor = e => {
       gsap.to(cursor, { duration: 0.1, x: e.clientX, y: e.clientY });
       gsap.to(cursorFollower, { duration: 0.3, x: e.clientX, y: e.clientY });
@@ -39,15 +35,21 @@ document.addEventListener('DOMContentLoaded', () => {
       cursor.classList.remove('cursor-click');
       cursorFollower.classList.remove('cursor-click');
     });
+  } else {
+    // Disable custom cursor on touch or reduced motion
+    document.body.style.cursor = 'auto';
+    if (cursor) cursor.style.display = 'none';
+    if (cursorFollower) cursorFollower.style.display = 'none';
   }
 
   // Navbar scroll effect with debounce
   const header = $('header');
   if (header) {
     let last = 0, t;
+    const headerHeight = header.offsetHeight;
     const onScroll = () => {
       const y = window.pageYOffset || document.documentElement.scrollTop;
-      header.style.top = y > last ? '-80px' : '0';
+      header.style.top = y > last ? `-${headerHeight}px` : '0';
       last = y;
     };
     window.addEventListener('scroll', () => {
@@ -56,19 +58,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // Smooth scrolling (guard target existence)
+  // Smooth scrolling (ignore href="#" placeholders)
   $$('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const target = $(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+      const href = a.getAttribute('href');
+      if (href.length > 1) {
+        const target = $(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     });
   });
 
-  // GSAP animations (guard gsap + plugin)
-  if (has('gsap')) {
+  // GSAP animations
+  if (has('gsap') && !reduceMotion) {
     if (has('ScrollTrigger')) gsap.registerPlugin(ScrollTrigger);
 
     gsap.from('.hero-content', { duration: 1, y: 50, opacity: 0, ease: 'power3.out', delay: 0.5 });
@@ -98,11 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // AOS (guard)
-  if (has('AOS')) AOS.init({ duration: 800, once: true });
+  // AOS
+  if (has('AOS') && !reduceMotion) AOS.init({ duration: 800, once: true });
 
-  // Typed.js (guard)
-  if (has('Typed') && $('#typed-text')) {
+  // Typed.js
+  if (has('Typed') && $('#typed-text') && !reduceMotion) {
     new Typed('#typed-text', {
       strings: ['Creative Technologist', 'Full-Stack Developer', 'UI/UX Enthusiast'],
       typeSpeed: 50,
@@ -112,15 +117,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile menu (guard)
+  // Mobile menu
   const menuToggle = $('.menu-toggle');
   const navUl = $('nav ul');
   if (menuToggle && navUl) {
-    menuToggle.addEventListener('click', () => navUl.classList.toggle('show'));
-    $$('.nav-link').forEach(link => link.addEventListener('click', () => navUl.classList.remove('show')));
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!expanded));
+      navUl.classList.toggle('show');
+    });
+    $$('.nav-link').forEach(link => link.addEventListener('click', () => {
+      navUl.classList.remove('show');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
   }
 
-  // Lazy-load images with data-src
+  // Lazy-load images
   const lazyImgs = $$('img.lazy[data-src]');
   const swapSrc = img => {
     img.src = img.dataset.src;
@@ -143,9 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Heavy effect after full load (prevents first-paint jank)
+// Heavy effect after full load
 window.addEventListener('load', () => {
-  if (window.particlesJS) {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (window.particlesJS && !reduceMotion) {
     particlesJS('particles-js', {
       particles: {
         number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -172,4 +185,3 @@ window.addEventListener('load', () => {
     });
   }
 });
-```
