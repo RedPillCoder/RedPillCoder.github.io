@@ -4,13 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RedPillCoder - Creative Technologist</title>
+  <meta name="description" content="RedPillCoder — Creative Technologist & Digital Innovator crafting immersive web experiences with modern tech and design." />
 
   <!-- Performance: fonts first -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-  <!-- AOS CSS (ensure elements are visible and animated properly) -->
+  <!-- AOS CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
   <!-- Icons -->
@@ -18,16 +19,21 @@
 
   <!-- Your styles last to override -->
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Preload hero image for faster LCP -->
+  <link rel="preload" as="image" href="https://via.placeholder.com/500" imagesrcset="https://via.placeholder.com/500 500w" imagesizes="(max-width: 600px) 80vw, 500px" />
 </head>
 <body>
+  <a href="#home" class="skip-link">Skip to content</a>
+
   <div class="cursor"></div>
   <div class="cursor-follower"></div>
   <div id="particles-js"></div>
 
   <header>
-    <nav>
+    <nav aria-label="Primary">
       <div class="logo">RPC</div>
-      <ul>
+      <ul id="primary-nav">
         <li><a href="#home" class="nav-link">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -35,8 +41,8 @@
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
-      <button class="menu-toggle" aria-label="Toggle menu">
-        <i class="fas fa-bars"></i>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-controls="primary-nav" aria-expanded="false">
+        <i class="fas fa-bars" aria-hidden="true"></i>
       </button>
     </nav>
   </header>
@@ -46,20 +52,18 @@
       <div class="hero-content">
         <h1 class="glitch" data-text="RedPillCoder">RedPillCoder</h1>
         <p class="tagline">Creative Technologist & Digital Innovator</p>
-        <span id="typed-text"></span>
+        <span id="typed-text" aria-live="polite"></span>
         <a href="#contact" class="cta-button">Let's Innovate Together</a>
       </div>
       <div class="hero-image">
         <div class="hero-shape"></div>
         <img
-          src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
-          data-src="https://via.placeholder.com/500"
+          src="https://via.placeholder.com/500"
           alt="RedPillCoder"
-          class="lazy"
           width="500"
           height="500"
-          loading="lazy"
           decoding="async"
+          fetchpriority="high"
         />
       </div>
     </section>
@@ -132,7 +136,7 @@
             <h3>Duplicate File Cleaner</h3>
             <p>This tool helps you identify and remove duplicate files in your Downloads folder, keeping only the most recently modified version of each file.</p>
             <div class="project-links">
-              <a href="https://github.com/RedPillCoder/duplicate-file-cleaner" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+              <a href="https://github.com/RedPillCoder/duplicate-file-cleaner" class="project-link" target="_blank" rel="noopener"> <i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
             </div>
           </div>
         </div>
@@ -154,7 +158,7 @@
             <h3>BatchScriptAutomation</h3>
             <p>BatchScriptAutomation is a repository of automated batch scripts (.bat) designed to simplify various system administration tasks.</p>
             <div class="project-links">
-              <a href="https://github.com/RedPillCoder/BatchScriptAutomation" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+              <a href="https://github.com/RedPillCoder/BatchScriptAutomation" class="project-link" target="_blank" rel="noopener"> <i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
             </div>
           </div>
         </div>
@@ -166,41 +170,41 @@
       <div class="contact-container">
         <form id="contact-form" data-aos="fade-up">
           <div class="form-group">
-            <input type="text" id="name" required />
+            <input type="text" id="name" name="name" required />
             <label for="name">Your Name</label>
           </div>
           <div class="form-group">
-            <input type="email" id="email" required />
+            <input type="email" id="email" name="email" required />
             <label for="email">Your Email</label>
           </div>
           <div class="form-group">
-            <textarea id="message" required></textarea>
+            <textarea id="message" name="message" required></textarea>
             <label for="message">Your Message</label>
           </div>
           <button type="submit" class="submit-button">
             <span>Send Message</span>
-            <i class="fas fa-paper-plane"></i>
+            <i class="fas fa-paper-plane" aria-hidden="true"></i>
           </button>
         </form>
 
         <div class="contact-info">
           <div class="contact-item">
-            <i class="fas fa-envelope"></i>
+            <i class="fas fa-envelope" aria-hidden="true"></i>
             <span>youremail@example.com</span>
           </div>
           <div class="contact-item">
-            <i class="fas fa-phone"></i>
+            <i class="fas fa-phone" aria-hidden="true"></i>
             <span>+1 (123) 456-7890</span>
           </div>
           <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
             <span>Your City, Country</span>
           </div>
           <div class="social-links">
-            <a href="https://github.com/RedPillCoder?tab=repositories" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-            <a href="#" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-            <a href="#" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
-            <a href="#" target="_blank" rel="noopener"><i class="fab fa-dribbble"></i></a>
+            <a href="https://github.com/RedPillCoder?tab=repositories" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+            <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn profile placeholder"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+            <a href="#" target="_blank" rel="noopener" aria-label="Twitter profile placeholder"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+            <a href="#" target="_blank" rel="noopener" aria-label="Dribbble profile placeholder"><i class="fab fa-dribbble" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
