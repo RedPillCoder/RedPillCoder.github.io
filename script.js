@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const has = k => k.split('.').reduce((o, p) => (o && o[p] !== undefined ? o[p] : undefined), window);
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Custom cursor
+  // ===== Custom Cursor =====
   const cursor = $('.cursor');
   const cursorFollower = $('.cursor-follower');
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -36,13 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
       cursorFollower.classList.remove('cursor-click');
     });
   } else {
-    // Disable custom cursor on touch or reduced motion
     document.body.style.cursor = 'auto';
     if (cursor) cursor.style.display = 'none';
     if (cursorFollower) cursorFollower.style.display = 'none';
   }
 
-  // Navbar scroll effect with debounce
+  // ===== Navbar scroll hide/show =====
   const header = $('header');
   if (header) {
     let last = 0, t;
@@ -58,11 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // Smooth scrolling (ignore href="#" placeholders)
+  // ===== Smooth scrolling =====
   $$('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const href = a.getAttribute('href');
-      if (href.length > 1) {
+      if (href && href.length > 1) {
         const target = $(href);
         if (target) {
           e.preventDefault();
@@ -72,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // GSAP animations
+  // ===== GSAP animations =====
   if (has('gsap') && !reduceMotion) {
     if (has('ScrollTrigger')) gsap.registerPlugin(ScrollTrigger);
 
@@ -103,10 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // AOS
+  // ===== AOS =====
   if (has('AOS') && !reduceMotion) AOS.init({ duration: 800, once: true });
 
-  // Typed.js
+  // ===== Typed.js =====
   if (has('Typed') && $('#typed-text') && !reduceMotion) {
     new Typed('#typed-text', {
       strings: ['Creative Technologist', 'Full-Stack Developer', 'UI/UX Enthusiast'],
@@ -117,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile menu
+  // ===== Mobile menu =====
   const menuToggle = $('.menu-toggle');
   const navUl = $('nav ul');
   if (menuToggle && navUl) {
@@ -132,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
   }
 
-  // Lazy-load images
+  // ===== Lazy-load images with fallback =====
   const lazyImgs = $$('img.lazy[data-src]');
   const swapSrc = img => {
     img.src = img.dataset.src;
@@ -155,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Heavy effect after full load
+// ===== Particles.js after full load =====
 window.addEventListener('load', () => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (window.particlesJS && !reduceMotion) {
